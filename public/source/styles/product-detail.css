@@ -1,0 +1,264 @@
+:root{
+    --main-color:red;   
+}
+
+ul, li{
+    margin: 0;
+    padding: 0;;
+}
+.flexed-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.set-height{
+    height: 80px;
+}
+
+.icon-right, .icon-left{
+    opacity: 0.6;
+}
+
+.product-detail{
+    margin: 25px 0;
+}
+
+.detail hr{
+    margin: 35px 0;
+}
+.detail .name{
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    color: #575757;
+}
+.detail .row hr{
+    height: 2px;
+    width: 50%;
+    margin: 2px 15px ;
+  
+    background:  var(--main-color);
+    border: none;
+    transition: .3s ease-in-out;
+  }
+
+.detail .brand-name{
+    color:#aebcb9;
+    font-style: italic; 
+    font-size: 1em;
+}
+
+
+.lable-color, .lable-qty{
+    color: #0d0d0d;
+    font-size: .9em;
+
+}
+.star{
+    color:  var(--main-color);
+    
+}
+.star .icon-star{
+    font-size: .8em;
+}
+
+.rating{
+    color:#aebcb9;
+    margin: 0 4px;
+}
+
+.input-qty{
+    border: 1px solid #cccccc;
+    display: inline-block;
+}
+.btn-sub, .btn-add{
+    width: 25px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    background: #cccccc none repeat scroll 0 0;
+    border: none;
+}
+
+.input-qty input{
+    width: 35px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    border: none;
+}
+
+.circle-1,.circle-2,.circle-3,.circle-4{
+    font-size: .9em;
+    margin-right: 9px;
+
+}
+.circle-1{
+   color:  var(--main-color);
+}
+
+.circle-2{
+    color: #fe5858;
+}
+
+.circle-3{
+    color: #00b2ee;
+}
+
+.circle-4{
+    color: rgb(150, 214, 52);
+}
+
+
+.icon{
+    color: #7c7b7b;
+    font-size: .8em;
+}
+
+.border-icon{
+    border: solid 1px #bbb3b3 ;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom:2px; 
+    margin: 0 0.5em 0px 0.5em;
+    cursor: pointer;
+}
+
+.border-icon:hover{
+    border: solid 1px  var(--main-color);
+    background:  var(--main-color);
+    opacity: 1;
+    transition: all .3s ease 0s;
+}
+
+.border-icon:hover .icon{
+    color: white;
+    opacity: 1;
+    transition: all .2s ease 0s;
+
+}
+
+.detail .price, .number{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: #666666;
+}
+.btn-buy-now{
+    width: 130px;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    color: white;
+    background: #575757;
+    border-radius: 3%;
+}
+
+.caterogy-list, .color-list, .recent-product-list, .operating-system-list{
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px 15px;
+}
+
+.title-categories, .title-color, .title-recent-product, .title-operating-system{
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    color: #575757;
+    margin-bottom: 20px;
+}
+
+.border-left-y{
+    position: relative;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    color: #575757;
+}
+.border-left-y::before {
+    background:  var(--main-color) none repeat scroll 0 0;
+    content: "";
+    height: 14px;
+    left: 0;
+    margin-top: -7px;
+    margin-right: 10px;
+    position: absolute;
+    top: 50%;
+    width: 3px;
+}
+
+.cat-treeview .treeview{
+    list-style: none;
+    color: #b3bbb9;
+    font-family: 'Raleway', sans-serif;
+}
+.cat-treeview .treeview a{
+    color: #b3bbb9;
+    text-decoration: none;
+}
+.cat-treeview .item{
+    margin: 5px 20px 5px;
+}
+.collasable{
+    margin: 0 0 8px 0;
+}
+.cat-treeview .child:active{
+    color:  var(--main-color);
+}
+.cat-treeview .child:hover{
+    color:  var(--main-color);
+}
+
+
+.color-yellow{
+    color:  var(--main-color);
+}
+
+.item-color ul{
+    list-style: none;
+    color: #b3bbb9;
+    font-family: 'Raleway', sans-serif;
+    
+}
+.item-color ul a{
+    color: #b3bbb9;
+    text-decoration: none;
+}
+
+.item-recent-product{
+    margin: 0 0 20px 0;
+    cursor: pointer;
+    
+}
+.item-recent-product:hover{
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: .3s ease-in-out;
+}
+
+.item-recent-product .name{
+    padding-top: 10px;;
+    font-size: 1.1em;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    color: #6b6868;
+}
+.item-recent-product .price{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: #999999;
+}
+
+
+
+
+.open{
+    cursor: pointer;
+}

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gear PC & MB Shop</title>
+    <!-- css of bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <!-- <script src="https://kit.fontawesome.com/ef3d1a92bf.js"></script> -->
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/product-detail.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.10.2-web/css/all.css">
+
+    <!-- gg fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- slide carosel  -->
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/owl.carousel.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+     <!-- change-color&btn-scroll -->
+     <link rel="stylesheet" href="./styles/change-color&btn-scroll.css">
+     <script src="./js/change-color&btn-scroll.js"></script>
+
+
+</head>
+
+<body>
+        <div class="btn-scroll-top">
+                <button id="btn-scroll-top"><i class="fas fa-angle-up"></i></button>
+            </div>
+        
+            <div class="color-box">
+                <div class="color-items">
+                    <button id="green-item" class="green-item"></button>
+                    <button id="orange-item" class="orange-item"></button>
+                </div>    
+                <button class="btn-setting" id="btn-setting-color"><i class="fas fa-cog"></i></button>
+            </div>
+    <!-- main wraps everything (header + wrapper + footer)-->
+    <div class="main contained-fluid">
+        <header>
+            <div class="header-first">
+                <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-6">+84 384 352 233</div>
+                        <div class="col-6">
+                            <div class="inline-block float-right">
+                                <i class="icon-account fas fa-user-circle"></i>
+                                <div id="my-account" class="my-account inline-block"></div>
+                                <span class="m-2">|</span>
+                                <i class="icon-wish fas fa-heart"></i>
+                                <div class="wish-list inline-block"></div>
+                                <span class="m-2">|</span>
+                                <i class="icon-login fas fa-lock"></i>
+                                <div class="login inline-block"></div>
+                                <div id="div"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="header-second">
+                <div class="container-fluid">
+                    <div class="row ">
+
+                        <div class="col-3 display-align">
+                            <div class="logo">
+                                <img src="./images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <!-- display-align-justify -->
+                        <div class="col-6 ">
+                            <!-- <div class="menu-top "> -->
+                            <!-- <div>
+                                    <div class="container-1">
+                                            <ul>
+                                                    <li class="active" ><a href="#">Home</a> </li>
+                                                    <li class="one"><a href="#">Element</a></li>
+                                                    <li class="two" ><a href="#">Product</a></li>
+                                                    <li class="three" ><a href="#">Page</a></li>
+                                                    <li class="four"><a href="#">Blog</a></li>
+                                                    <li class="five"><a href="#">About Us</a></li>
+                                                    <li class="six"><a href="#">Contact</a></li>
+                                                    <hr>
+                                                </ul>
+                                    </div>
+                                    
+                                </div> -->
+
+                            <!-- </div> -->
+                            <div class="menu mt-3">
+                                <ul>
+                                    <li class="one"><a href="#">Home</a> </li>
+                                    <li class="two"><a href="#">Element</a></li>
+                                    <li class="three"><a href="#">Product</a></li>
+                                    <li class="four"><a href="#">Page</a></li>
+                                    <li class="five"><a href="#">Blog</a></li>
+                                    <li class="six"><a href="#">About Us</a></li>
+                                    <li class="seven"><a href="#">Contact</a></li>
+                                    <hr />
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-3 display-align search-cart">
+                            <div>
+                                <div class="inline-block search">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="inline-block brick m-3 ">
+                                    |
+                                </div>
+                                <div class="inline-block shopping-cart">
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </header>
+        <main>
+            <div class="slide-advertise">
+                <div class="contained-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div id="demo" class="carousel slide" data-ride="carousel">
+                                <ul class="carousel-indicators">
+                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                    <li data-target="#demo" data-slide-to="1"></li>
+
+                                </ul>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="./images/slide-product.PNG" alt="Los Angeles" width="100%">
+                                        <div class="carousel-caption color-black">
+                                            <h3>PRODUCT-ADVERTISE-X</h3>
+                                            <p>Shopping Now</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="./images/slide-product.PNG" alt="Chicago" width="100%">
+                                        <div class="carousel-caption color-black">
+                                            <h3>PRODUCT-ADVERTISE-Y</h3>
+                                            <p>Shopping Now</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev " href="#demo" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#demo" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-detail">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="image-product">
+                                <img src="./images/2.jpg" alt="" width="100%" height="">
+                            </div>
+                            <div class="list-images-description">
+                                <div class="row pt-4">
+                                    <div class="col-2 display-align-justify"> <i
+                                            class="icon-left fas fa-arrow-left"></i></div>
+                                    <div class="col-8 p-0">
+                                        <div class="row">
+                                            <div class="owl-carousel set-height">
+                                                <div class="col p-2">
+                                                    <img src="./images/1(2).jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                                <div class="col p-2">
+                                                    <img src="./images/2.jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                                <div class="col p-2">
+                                                    <img src="./images/3.jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                                <div class="col p-2">
+                                                    <img src="./images/4.jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                                <div class="col p-2">
+                                                    <img src="./images/2.jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                                <div class="col p-2">
+                                                    <img src="./images/3.jpg" alt="" width="100%" height="">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 display-align-justify "><i
+                                            class="icon-right fas fa-arrow-right"></i></div>
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="detail">
+
+                                <div class="row">
+                                    <div class="col-12 name">PRODUCT NAME</div>
+
+                                    <div class="col-12 brand-name">Brand Name</div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-2 display-align">
+                                        <div class="lable-color">COLOR</div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="color">
+                                            <i class="fas fa-circle circle-1"></i>
+                                            <i class="fas fa-circle circle-2"></i>
+                                            <i class="fas fa-circle circle-3"></i>
+                                            <i class="fas fa-circle circle-4"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 flexed-end">
+                                        <div class="star inline-block">
+                                            <i class="fas fa-star icon-star"></i>
+                                            <i class="fas fa-star icon-star"></i>
+                                            <i class="fas fa-star icon-star"></i>
+                                            <i class="fas fa-star-half-alt icon-star"></i>
+                                            <i class="far fa-star icon-star"></i>
+                                        </div>
+                                        <div class="rating inline-block">
+                                            ( 27 Rating )
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-2 display-align">
+                                        <div class="lable-qty">QTY</div>
+                                    </div>
+                                    <div class="col-5  display-align">
+                                        <div class="input-qty inline-block">
+                                            <div class="inline-block"><button class="btn-sub ">-</button></div>
+
+                                            <input type="text" value="1">
+                                            <button class="btn-add">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="icon flexed-end">
+                                            <div class="icon-love border-icon">
+                                                <i class="icon fas fa-heart"></i>
+                                            </div>
+                                            <div class=" icon-search border-icon">
+                                                <i class="icon fas fa-search-plus"></i>
+                                            </div>
+                                            <div class="icon-star border-icon">
+                                                <i class="icon fas fa-star"></i>
+                                            </div>
+                                            <div class="cart-shopping border-icon">
+                                                <i class="icon fas fa-cart-plus"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="price">Price: $ 796.00</div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="buy-now">
+                                            <button class="btn-buy-now">BUY NOW</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="caterogy-list">
+                                <div class="title-categories">
+                                    <div class="border-left-y">
+                                        CATEGORY
+                                    </div>
+                                </div>
+                                <div class="cat-treeview">
+                                    <ul class="treeview">
+                                            <li class="open collasable" id="item-first">
+                                                    <div class="child open">Brand One</div>
+                                                    <ul class="treeview item open">
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 2</div></li>
+                                                        <li class="open"><div>Brand 3</div></li>
+                                                        <li class="open"><div>Brand 4</div></li>
+                                                        <li class="open"><div>Brand 5</div></li>
+                                                    </ul>
+                                            </li>
+                                            <li class="open collasable" id="item-first">
+                                                    <div class="child open">Brand Two</div>
+                                                    <ul class="treeview item open">
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 2</div></li>
+                                                        <li class="open"><div>Brand 3</div></li>
+                                                        <li class="open"><div>Brand 4</div></li>
+                                                        <li class="open"><div>Brand 5</div></li>
+                                                    </ul>
+                                            </li>
+                                            <li class="open collasable" id="item-first">
+                                                    <div class="child open">Brand Three</div>
+                                                    <ul class="treeview item open">
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 2</div></li>
+                                                        <li class="open"><div>Brand 3</div></li>
+                                                        <li class="open"><div>Brand 4</div></li>
+                                                        <li class="open"><div>Brand 5</div></li>
+                                                    </ul>
+                                            </li>
+                                            <li class="open collasable" id="item-first">
+                                                    <div class="child open">Brand Four</div>
+                                                    <ul class="treeview item open">
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 2</div></li>
+                                                        <li class="open"><div>Brand 3</div></li>
+                                                        <li class="open"><div>Brand 4</div></li>
+                                                        <li class="open"><div>Brand 5</div></li>
+                                                    </ul>
+                                            </li>
+                                            <li class="open collasable" id="item-first">
+                                                    <div class="child open">Brand Five</div>
+                                                    <ul class="treeview item open">
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 1</div></li>
+                                                        <li class="open"><div>Brand 2</div></li>
+                                                        <li class="open"><div>Brand 3</div></li>
+                                                        <li class="open"><div>Brand 4</div></li>
+                                                        <li class="open"><div>Brand 5</div></li>
+                                                    </ul>
+                                            </li>
+                                               
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="color-list mt-4 ">
+                                    <div class="title-color">
+                                        <div class="title-color border-left-y">
+                                            COLOR
+                                        </div>
+                                    </div>  
+                                    <div class="item-color">
+                                            <ul>
+                                                    <li class=" collasable"><a href="#"><i class="fas fa-circle circle-1"></i>Red Color</a></li>
+                                                    <li class=" collasable"><a href="#"> <i class="fas fa-circle circle-2"></i>Blue Colo</a></li>
+                                                    <li class=" collasable"><a href="#"> <i class="fas fa-circle circle-3"></i>Greeb Colo</a></li>
+                                                    <li class=" collasable"><a href="#"> <i class="fas fa-circle circle-4"></i>Yellow Colo</a></li>
+                                                    <li class=" collasable"><a href="#"><i class="fas fa-circle circle-4"></i>Orange Colo</a></li>
+                                            </ul>
+                                            
+                                    </div>
+
+                                   
+                                </div>
+
+                                <div class="recent-product-list mt-4 ">
+                                        <div class="title-recent-product">
+                                            <div class="border-left-y">
+                                                RECENT PRODUCTS
+                                            </div>
+                                        </div>  
+                                        <div class="item-recent-product">
+                                            <div class="row">
+                                                <div class="col-4 pr-0"><img src="./images/2.jpg" alt="" width="100%"></div>
+                                                <div class="col-8">
+                                                    <div class="name">Product Name</div>
+                                                    <div class="price">$ 888.00</div>
+                                                </div>
+                                            </div>
+                                                
+                                        </div>
+                                        <div class="item-recent-product">
+                                                <div class="row">
+                                                    <div class="col-4 pr-0"><img src="./images/3.jpg" alt="" width="100%"></div>
+                                                    <div class="col-8">
+                                                        <div class="name">Product Name</div>
+                                                        <div class="price">$ 888.00</div>
+                                                    </div>
+                                                </div>
+                                                    
+                                            </div>
+                                            <div class="item-recent-product">
+                                                    <div class="row">
+                                                        <div class="col-4 pr-0"><img src="./images/1(2).jpg" alt="" width="100%"></div>
+                                                        <div class="col-8">
+                                                            <div class="name">Product Name</div>
+                                                            <div class="price">$ 888.00</div>
+                                                        </div>
+                                                    </div>
+                                                        
+                                                </div>
+                                                <!-- <div class="item-recent-product">
+                                                        <div class="row">
+                                                            <div class="col-4 pr-0"><img src="./images/4.jpg" alt="" width="100%"></div>
+                                                            <div class="col-8">
+                                                                <div class="name">Product Name</div>
+                                                                <div class="price">$ 888.00</div>
+                                                            </div>
+                                                        </div>
+                                                            
+                                                    </div>
+     -->
+                                       
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+        <footer>
+            <div class="footer">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col display-align-justify">
+                            © MennLy2019. All Rights Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- script of bootstrap 4 -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            // $('.owl-example').owlCarousel({
+            //     loop: true,
+            //     margin: 0,
+            //     responsiveClass: true,
+            //     autoplay: true,
+            //     responsive: {
+            //         0: {
+            //             items: 1,
+            //             nav: true
+            //         },
+            //         600: {
+            //             items: 2,
+            //             nav: true
+            //         },
+            //         1000: {
+            //             items: 3,
+            //             nav: false,
+            //             loop: true,
+            //         }
+            //     }
+            // })
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 0,
+                responsiveClass: true,
+                navSpeed: false,
+                dots: true,
+                autoplay: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 4,
+                        nav: false,
+                        loop: true,
+
+                    }
+                }
+            })
+        });    
+    </script>
+
+    <script>
+            $(document).ready(function(){
+               
+                $('.item').slideUp();
+
+                $('.collasable .open').click(function(){
+                    $(this).next('.item').slideToggle();
+                    $(this).toggleClass('color-yellow');
+                });
+
+
+            });
+        
+        </script>
+
+</body>
+
+</html>

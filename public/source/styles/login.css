@@ -1,0 +1,108 @@
+/* login */
+.wrapper-login{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+.login-acount .title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.login-acount .form-login{
+  border: 1px solid rgba(0,0,0,.1);
+}
+.form-login{
+
+}
+.form-login label{
+    margin: 0;
+    color: #7c7b7b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-login .center{
+ 
+ 
+    display: flex;
+    align-items: center;
+    
+}
+
+.btn-show{
+    background: #878787;
+    border: #292929;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+   
+}
+
+
+.forgot-password, .create-account{
+    text-align: center;
+    font-weight: 600;
+    
+}
+.forgot-password a, .create-account a{
+    color: #7c7b7b;
+}
+.forgot-password a:hover, .create-account a:hover{
+    color: #e15a6d; 
+    text-decoration: none;
+}
+
+.button-sign-in{
+    display: flex;
+    justify-content: center;
+}
+.button-sign-in .btn-color{
+    background-color: #292929;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 23px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease-in-out 0s;
+
+}
+.button-sign-in .btn-color:hover{
+    background-color: #ff7f00;
+}
+.button-sign-in .btn-color:active{
+    background-color: rgb(129, 201, 21);
+}
+.create-account{
+    display: flex;
+    justify-content: center;
+}
+
+/* register */
+.ex{
+   color: #878787;
+}
+.button-sign-out{
+    display: flex;
+    justify-content: flex-end;
+}
+.button-sign-out .btn-color{
+    background-color: #292929;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 23px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.button-sign-out .btn-color:hover{
+    background-color: #e15a6d;
+}
+.button-sign-out .btn-color:active{
+    background-color: rgb(129, 201, 21);
+}
+
+

@@ -1,0 +1,150 @@
+:root{
+    --main-color:red;   
+}
+
+.items-operating-system{
+
+}
+.items-operating-system ul{
+    list-style: none;
+}
+
+.items-operating-system ul li{
+    margin-bottom: 8px;
+}
+.items-operating-system ul li .item-checkbox{
+   
+        position: absolute;
+        margin-top: .2rem;
+        margin-left: -1.25rem;
+}
+.items-operating-system ul li .item-name{
+    color: #9a9e9d;
+    display: flex;
+    align-items: center;
+    margin-left: 9px;
+}
+
+/* dddd */
+.feature-product .title{
+    font-size: 2.3em;
+    font-weight: 900;
+    margin: 1.8em 0 0px 0;
+}
+.feature-product .description{
+    margin: 0.4em 0 1.5em 0;;
+}
+.feature-product hr {
+    height: .25rem;
+    width: 2.8rem;
+    margin: 0;
+    padding: 0;
+    background: var(--main-color);
+    border: none;
+    transition: .3s ease-in-out;
+  }
+
+.cart{
+    background: #f6f6f6 none repeat scroll 0 0;
+    margin: 0 0 1em 0;
+}
+.cart:hover{
+    box-shadow: 0px 2.5px 5px 3px rgba(0, 0, 0, 0.15);
+    transition: all .3s ease 0s;
+}
+.cart-header{
+    cursor: pointer;
+}
+
+.cart-header:hover{
+    background: #333;
+    opacity: .9;
+    transition: all 0.5s;
+    transform: scale(1, 1);
+    transition: all 1s ease 0s;
+}
+
+.cart-body{
+    margin: 1.2em 0 .8em 0;
+}
+
+.cart-body .name{
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #434343;
+    cursor: pointer;
+}
+
+.cart-body .name:hover{
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--main-color);
+    transition: all .3s ease 0s;
+}
+
+
+.cart-body .star{
+    font-size: 0.9em;
+    margin: 0.5em 0.1em 0.7em 0.1em;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+.cart-body .price{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.4em;
+    color:#434343;
+    cursor: pointer;
+}
+.cart-body .price:hover{
+    color: var(--main-color);
+    transition: all .3s ease 0s;
+}
+
+.cart-footer .icon{
+    color: #7c7b7b;
+    font-size: .8em;
+    padding-bottom: 0px;
+}
+
+.border-icon{
+    border: solid 1px #bbb3b3 ;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    margin: 0 0.5em 20px 0.5em;
+    cursor: pointer;
+}
+
+.border-icon:hover{
+    border: solid 1px var(--main-color);
+    background: var(--main-color);
+    opacity: 1;
+    transition: all .1s ease 0s;
+}
+
+.border-icon:hover .icon{
+    color: white;
+    opacity: 1;
+    transition: all .3s ease 0s;
+}
+
+.cart-footer button{
+    border: none;
+    background: none;
+}
+  
+
+.cart-footer button:active{
+    border: none;
+    background: none;
+}
+.cart-footer button:visited{
+    border: none;
+    background: none;
+}

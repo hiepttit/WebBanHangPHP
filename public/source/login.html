@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gear PC & MB Shop</title>
+    <!-- css of bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <!-- <script src="https://kit.fontawesome.com/ef3d1a92bf.js"></script> -->
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.10.2-web/css/all.css">
+
+    <!-- gg fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- slide carosel  -->
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./OwlCarousel2-2.3.4/docs/assets/owlcarousel/owl.carousel.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+</head>
+<style>
+
+</style>
+
+<body>
+    <!-- main wraps everything (header + wrapper + footer)-->
+    <div class="main contained-fluid">
+        <header>
+            <div class="header-first">
+                <div class="container-fluid">
+                    <div class="row ">
+                        <div class="col-6">+84 384 352 233</div>
+                        <div class="col-6">
+                            <div class="inline-block float-right">
+                                <i class="icon-account fas fa-user-circle"></i>
+                                <div id="my-account" class="my-account inline-block"></div>
+                                <span class="m-2">|</span>
+                                <i class="icon-wish fas fa-heart"></i>
+                                <div class="wish-list inline-block"></div>
+                                <span class="m-2">|</span>
+                                <i class="icon-login fas fa-lock"></i>
+                                <div class="login inline-block"></div>
+                                <div id="div"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="header-second">
+                <div class="container-fluid">
+                    <div class="row ">
+
+                        <div class="col-3 display-align">
+                            <div class="logo">
+                                <img src="./images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <!-- display-align-justify -->
+                        <div class="col-6 ">
+                            <!-- <div class="menu-top "> -->
+                            <!-- <div>
+                                    <div class="container-1">
+                                            <ul>
+                                                    <li class="active" ><a href="#">Home</a> </li>
+                                                    <li class="one"><a href="#">Element</a></li>
+                                                    <li class="two" ><a href="#">Product</a></li>
+                                                    <li class="three" ><a href="#">Page</a></li>
+                                                    <li class="four"><a href="#">Blog</a></li>
+                                                    <li class="five"><a href="#">About Us</a></li>
+                                                    <li class="six"><a href="#">Contact</a></li>
+                                                    <hr>
+                                                </ul>
+                                    </div>
+                                    
+                                </div> -->
+
+                            <!-- </div> -->
+                            <div class="menu mt-3">
+                                <ul>
+                                    <li class="one"><a href="#">Home</a> </li>
+                                    <li class="two"><a href="#">Element</a></li>
+                                    <li class="three"><a href="#">Product</a></li>
+                                    <li class="four"><a href="#">Page</a></li>
+                                    <li class="five"><a href="#">Blog</a></li>
+                                    <li class="six"><a href="#">About Us</a></li>
+                                    <li class="seven"><a href="#">Contact</a></li>
+                                    <hr />
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-3 display-align search-cart">
+                            <div>
+                                <div class="inline-block search">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="inline-block brick m-3 ">
+                                    |
+                                </div>
+                                <div class="inline-block shopping-cart">
+                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </header>
+        <main>
+            <div class="slide-advertise">
+                <div class="contained-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div id="demo" class="carousel slide" data-ride="carousel">
+                                <ul class="carousel-indicators">
+                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                    <li data-target="#demo" data-slide-to="1"></li>
+
+                                </ul>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="./images/slide-product.PNG" alt="Los Angeles" width="100%">
+                                        <div class="carousel-caption color-black">
+                                            <h3>PRODUCT-ADVERTISE-X</h3>
+                                            <p>Shopping Now</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="./images/slide-product.PNG" alt="Chicago" width="100%">
+                                        <div class="carousel-caption color-black">
+                                            <h3>PRODUCT-ADVERTISE-Y</h3>
+                                            <p>Shopping Now</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev " href="#demo" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#demo" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper-login mb-5">
+
+                <div class="container mt-5 login-acount">
+                    <div class="row justify-content-center">
+                      
+    
+                        <div class="col-9 ">
+                            <form class="form-login">
+                                <div class="row mt-2">
+                                        <div class="col-12 mt-4">
+                                                <h4 class="title">LOG IN YOUR ACOUNT</h4>
+                                  
+                                            </div>
+                                    <div class="col-12 mt-4 mb-4">
+                                        <div class="row">
+                                            <div class="col-3 ml-4 center"><label for="formGroupExampleInput">Email</label></div>
+                                            <div class="col-6 input-group">
+                                                <input type="email" class="form-control" id="formGroupExampleInput">
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="row">
+                                            <div class="col-3 ml-4 center"><label for="formGroupExampleInput2">Password</label>
+                                            </div>
+                                            <div class="col-6">
+    
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control"
+                                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-secondary btn-show"
+                                                            type="button">SHOW</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-12 forgot-password">
+                                    <a href="#" class="">Forgot your password?</a>
+                                </div>
+                                <div class="col-12 button-sign-in mt-3 mb-4">
+                                    <button class="btn-color" type="button">SIGN IN</button>
+                                </div>
+                                <div class="col-12">
+                                        <hr class="ml-4 mr-4">
+                                </div>
+                                
+    
+                                <div class="col-12 create-account mt-3 mb-5">
+                                    <a href="./register.html">No account? Create one here</a>
+                                </div>
+                            </form>
+    
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+
+        </main>
+        <footer>
+            <div class="footer">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col display-align-justify">
+                            © MennLy2019. All Rights Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- script of bootstrap 4 -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

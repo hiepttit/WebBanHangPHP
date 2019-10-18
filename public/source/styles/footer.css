@@ -1,0 +1,12 @@
+footer{
+    position: relative;
+    z-index: 1000;
+}
+.footer{
+    background: #222222;
+    color: whitesmoke;
+    padding: 6px 0px;
+    font-size: 0.8em;
+    margin-top:30px;
+
+}

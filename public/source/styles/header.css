@@ -1,0 +1,223 @@
+*, html, body{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+}
+body{
+    overflow-x: hidden;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    margin: 0;
+    padding: 0;
+}
+.container-fluid{
+    padding: 0 50px;
+}
+.inline-block{
+    display: inline-block;
+}
+
+.header-first{
+    background: #222222;
+    color: whitesmoke;
+    padding: 6px 0px;
+    font-size: 0.8em;
+}
+
+.header-second{
+    height: 4em;
+    display: flex;
+    align-items: center;
+}
+.menu-top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-top ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-top ul li{
+    margin: 0 1.5em;
+    font-size: 1em;
+    font-weight: 700;
+}
+.menu-top .active{
+    color: #ff7f00;
+    text-decoration: #ff7f00;
+    
+}
+.menu-top ul li:hover ~ hr{
+    color: #ff7f00;
+}
+
+
+
+
+.display-flex{
+    display: flex;
+}
+.display-align{
+    display: flex;
+    align-items: center;
+}
+
+.display-justify{
+    display: flex;
+    justify-content: center;
+}
+
+.display-align-justify{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-cart{
+    justify-content: flex-end;
+}
+.brick{
+    font-size: 1.2em;
+}
+
+/*  */
+.menu{
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+.menu ul li {
+    display: inline;
+    cursor: pointer;
+  }
+  .menu ul li:hover a{
+    color: #ff7f00;
+    transition: .3s ease-in-out;
+  }
+.menu a {
+    display: inline-block;
+    width: 13%;
+    padding: .25rem 0;
+    margin: 0;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .one,.two,.three,.four,.five,.six,.seven{
+      width: 13%;
+  }
+  
+  .two:hover ~ hr {
+    margin-left: 13.5%;
+  }
+  
+  .three:hover ~ hr {
+    margin-left: 27%;
+  }
+  .four:hover ~ hr {
+    margin-left: 41%;
+  }
+  .five:hover ~ hr {
+    margin-left: 54%;
+  }
+  .six:hover ~ hr {
+    margin-left: 68%;
+  }
+  .seven:hover ~ hr {
+    margin-left: 81.5%;
+  }
+  
+  
+ .menu hr {
+    height: .25rem;
+    width: 13%;
+    margin: 0;
+    padding: 0;
+    background: #ff7f00;
+    border: none;
+    transition: .3s ease-in-out;
+}
+
+
+.header-third{
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.header-third-index{
+    z-index: 1000;
+}
+.dropdown-items{
+    position: absolute;
+    width: 100%;
+    color: rgb(125, 135, 145);
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    /* height: 310px; */
+   
+}
+
+.add-home-hide, .add-element-hide, .add-product-hide, .add-page-hide{
+    position: absolute;
+    width: 100%;
+    top:0px;
+    z-index: 0;
+    transition: 0.1s ease-out;
+    opacity: 0;
+}
+
+.add-home-show, .add-element-show, .add-product-show, .add-page-show{
+    top: 0px;
+    opacity: 1;
+    height: auto;
+    z-index: 1001;
+}
+.dropdown-home{
+    width: 50%;
+    margin: 0 auto;
+    /* position: absolute; */
+
+    
+}
+.dropdown-element{
+    width: 60%;
+    margin: 0 auto;
+    /* position: absolute; */
+
+}
+.dropdown-product{
+    width: 70%;
+    margin: 0 auto;
+    /* position: absolute; */
+
+}
+.dropdown-page{
+    width: 80%;
+    margin: 0 auto;
+    /* position: absolute; */
+
+}
+
+
+
+
+
+
+
+
+
+
+
