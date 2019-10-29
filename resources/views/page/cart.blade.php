@@ -121,7 +121,11 @@
                                     </div>
                                     <div class="col-1">
                                         <div class="icon-delete">
-                                            <a href="{{route('delCart',$product['item']['id'])}}"><i class="fas fa-trash "></i></a>
+                                            <!-- <button onclick="deleteThis({{$product['item']['id']}})"> -->
+                                                <a hrefs="{{route('delCart',$product['item']['id'])}}">
+                                                    <i class="fas fa-trash "></i>
+                                                </a>
+                                            <!-- </button> -->
                                         </div>
 
                                     </div>
@@ -130,6 +134,23 @@
                                 @endif
                                 <!-- end-1-product -->
                 </div>
+                <script>
+                    function deleteThis(id){
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                            }
+                        });
+                        jQuery.ajax({
+                            url: "./delGioHang/" + id,
+                            method: 'post',
+                            success: function(result){
+                                jQuery('.alert').show();
+                                jQuery('.alert').html(result.success);
+                            }});
+                        });
+                    }
+                </script>
                             <!--end product-cart -->
 
                         </div>

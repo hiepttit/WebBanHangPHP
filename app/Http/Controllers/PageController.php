@@ -40,6 +40,7 @@ class PageController extends Controller
         return view('page.register');
     }
     public function getAddCart(Request $req,$id){
+        //return "Hello";
         $product=Product::find($id);
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
@@ -55,16 +56,30 @@ class PageController extends Controller
         return view('page.cart',compact('slide'));
     }
     public function getDelCart($id){
+        //return "ok";
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
 
         if(count($cart->items)>0){
-            Session::put('cart',$cart);
+           Session::put('cart',$cart);
         }
         else{
             Session::forget('cart');
         }
         return redirect()->back();
+    }
+    public function getSearch(Request $req){
+        $slide=Slide::all();
+        if($req->key==""){
+            return redirect()->back();
+        }
+        else{
+            $product=Product::where('name','like','%'.$req->key.'%')
+            //->orWhere('unit_price',$req->key)
+            ->get();
+        }
+        
+        return view('page.search',compact('slide','product'));
     }
 }

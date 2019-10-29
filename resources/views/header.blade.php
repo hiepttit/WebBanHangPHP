@@ -48,8 +48,8 @@
                         <div class="col-3 display-align search-cart">
                             <div>
                                 <div class="inline-block search">
-                                    <form role="search" method="get" id="searchform" action="/">
-                                        <input type="text" value="" name="s" id="s" placeholder="Nhập từ khóa..." />
+                                    <form role="search" method="get" id="searchform" action="{{route('search')}}">
+                                        <input class="active-pink-3 active-pink-4 mb-4" type="text" name="key" placeholder="Search" aria-label="Search">
                                         <button class="fas fa-search" type="submit" id="searchsubmit"></button>
                                     </form>
                                 </div>
@@ -76,7 +76,7 @@
                             <div class="container">
                                 <div class="row bg-warning">
                                 @foreach($loaiSP as $loai)
-                                <div class="col-4  bg-danger"><a href="{{route('loaiSP',$loai->id)}}">{{$loai->name}}</a></div>
+                                    <div class="col-4  bg-danger"><a href="{{route('loaiSP',$loai->id)}}">{{$loai->name}}</a></div>
                                 @endforeach
                                 </div>
                             </div>

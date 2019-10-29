@@ -46,3 +46,7 @@ Route::get('delGioHang/{id}',[
     'as'=>'delCart',
     'uses'=>'PageController@getDelCart'
 ]);
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'PageController@getSearch'
+]);
