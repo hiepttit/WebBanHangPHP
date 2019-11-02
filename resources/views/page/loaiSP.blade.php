@@ -270,7 +270,7 @@
                                                             <i class="icon fas fa-star"></i>
                                                         </div>
                                                         <div class="cart-shopping border-icon">
-                                                            <a href="{{route('AddCart',$sp->id)}}"><i class="icon fas fa-cart-plus"></i></a>
+                                                            <a onclick="addSPToCart({{$sp->id}})"><i class="icon fas fa-cart-plus"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -286,6 +286,8 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                </script>
             </div>
 
 </main>

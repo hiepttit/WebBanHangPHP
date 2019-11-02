@@ -39,7 +39,7 @@
   } );
   </script>
   <!-- Custom scripts for all pages-->
-  <!-- <script src="{{asset('cms/js/sb-admin-2.min.js')}}"></script> -->
+  <script src="{{asset('cms/js/sb-admin-2.min.js')}}"></script>
   
 </body>
 

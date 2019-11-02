@@ -81,8 +81,11 @@
                     </div>
                 </div>
             </div>
-
-
+            @if(Session::has('message'))
+            <script>
+                alert("{{Session::get('message')}}");
+            </script>
+            @endif
             <div class="wrapper-shopping-cart">
 
                 <div class="container mt-5">
@@ -102,8 +105,8 @@
 
                                 <!-- start-1-product -->
                                 @if(Session::has('cart'))
-                                @foreach(session('cart')->items as $product)
-                                <div id="products_{{$product['item']['id']}}" class="row product">
+                                @foreach($lstPro as $product)
+                                <div id="products_{{$product->id}}" class="row product">
                                     <!-- line -->
                                     <div class="col-12">
                                         <hr>
@@ -111,7 +114,7 @@
 
                                     <div class="col">
                                         <div class="product-image">
-                                            <img src="source/images/product/{{$product['item']['image']}}" alt="" width="100%">
+                                            <img src="source/images/product/{{$product->image}}" alt="" width="100%">
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -126,8 +129,8 @@
                                                     <i class="far fa-star"></i>
 
                                                 </div>
-                                                <div class="product-name">{{$product['item']['name']}}</div>
-                                                <div class="product-price">$ {{$product['item']['unit_price']}}</div>
+                                                <div class="product-name">{{$product->name}}</div>
+                                                <div class="product-price">$ {{$product->unit_price}}</div>
 
                                             </div>
                                         </div>
@@ -136,7 +139,7 @@
                                     <div class="col-2">
                                         <div class="quantity">
                                             <div class="input-group">
-                                                <input type="text" value="0">
+                                                <input type="text" value="{{Session('cart')->listProducts['0'.$product->id]}}">
                                                 <div class="button">
                                                     <button>+</button>
                                                     <button>-</button>
@@ -146,12 +149,12 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="product-price-sum">$ {{Session('cart')->totalPrice}}</div>
+                                        <div class="product-price-sum">$ {{Session('cart')->listProducts['0'.$product->id]*$product->unit_price}}</div>
                                     </div>
                                     <div class="col-1">
                                         <div class="icon-delete">
-                                            <button onclick="deleteThis({{$product['item']['id']}})">
-                                                <!-- <a hrefs="{{route('delCart',$product['item']['id'])}}"> -->
+                                            <button onclick="deleteThis({{$product->id}})">
+                                                <!-- <a hrefs="{{route('delCart',$product->id)}}"> -->
                                                     <i class="fas fa-trash "></i>
                                                 <!-- </a> -->
                                             </button>
@@ -179,13 +182,13 @@
                                 <hr>
                                 <div class="row product-cart-items">
                                     <div class="col"><span class="float-left">Items</span></div>
-                                    <div class="col "><span class="float-right">120</span></div>
+                                    <div class="col "><span class="float-right">{{Session('cart')->totalQty??0}}</span></div>
                                 </div>
 
-                                <div class="row product-cart-promo-code">
+                                <!-- <div class="row product-cart-promo-code">
                                     <div class="col float-left"><span class="float-left">Promo code</span></div>
                                     <div class="col"><span class="float-right">12.0%</span></div>
-                                </div>
+                                </div> -->
                                 <div class="row product-cart-shipping">
                                     <div class="col float-left"><span class="float-left">Shipping</span></div>
                                     <div class="col"><span class="float-right">Free</span></div>
@@ -193,12 +196,12 @@
                                 <hr>
                                 <div class="row product-cart-total">
                                     <div class="col float-left total">Total</div>
-                                    <div class="col"><span class="float-right price">$12000000.00</span></div>
+                                    <div class="col"><span class="float-right price">{{Session('cart')->totalPrice??0}}</span></div>
                                 </div>
                                 <hr>
                                 <div class="row product-cart-checkout">
                                     <div class="col">
-                                        <button class="btn btn-dark">CHECKOUT</button>
+                                        <button class="btn btn-dark" data-toggle="modal" data-target="#myModal">CHECKOUT</button>
                                     </div>
                                 </div>
 
@@ -206,7 +209,60 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                    <form action="{{route('checkOut')}}" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4 class="modal-title">Modal Header</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body" style="max-height: 600px; overflow: auto;">
+                            
+                            <div class="form-group">
+                                <label>Tên<label>
+                                <input class="form-control" name="customerName" id="customerName"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính<label>
+                                <input class="form-control" name="customerGender" id="customerGender"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Email<label>
+                                <input class="form-control" name="customerEmail" id="customerEmail"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ<label>
+                                <input class="form-control" name="customerAddress" id="customerAddress"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại<label>
+                                <input class="form-control" name="customerPhone" id="customerPhone"/>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Số lượng hàng<label>
+                                <input class="form-control" value="{{Session::get('cart')->totalQty??0}}" readonly/>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tổng số tiền<label>
+                                <input class="form-control" value="{{Session::get('cart')->totalPrice??0}}" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <label>Hình thức thanh toán<label>
+                                <input class="form-control" name="typePayment" id="typePayment"/>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Thanh toán</button>
+                                <button style="background-color:#ddd" type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
             </div>
 </main>
 @endsection

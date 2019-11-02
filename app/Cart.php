@@ -3,18 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Cart extends Model
 {
     public $items = null;
 	public $totalQty = 0;
 	public $totalPrice = 0;
+	public $listProducts = [];
 
 	public function __construct($oldCart){
 		if($oldCart){
-			$this->items = $oldCart->items;
+			//$this->items = $oldCart->items;
 			$this->totalQty = $oldCart->totalQty;
 			$this->totalPrice = $oldCart->totalPrice;
+			$this->listProducts = $oldCart->listProducts;
 		}
 	}
 
@@ -46,5 +49,31 @@ class Cart extends Model
 		$this->totalQty -= $this->items[$id]['qty'];
 		$this->totalPrice -= $this->items[$id]['price'];
 		unset($this->items[$id]);
+	}
+	public function addProduct($id){
+		if(array_key_exists($id, $this->listProducts)){
+			$this->listProducts[$id]++;
+		}
+		else
+			$this->listProducts[$id] = 1;
+	}
+	public function removeProduct($id){
+		if(array_key_exists($id, $this->listProducts)){
+			$this->listProducts[$id]--;
+			if($this->listProducts[$id] == 0)
+				unset($this->listProducts[$id]);
+		}
+	}
+	public function toListProducts(){
+		$lstPro = [];
+		$this->totalPrice = 0;
+		$this->totalQty = 0;
+		foreach ($this->listProducts as $key => $value) {
+			$temp = Product::find($key);
+			array_push($lstPro,$temp);
+			$this->totalQty += $value;
+			$this->totalPrice += ($temp->unit_price * $value);
+		}
+		return $lstPro;
 	}
 }

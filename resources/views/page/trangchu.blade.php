@@ -95,7 +95,7 @@
                                                 <i class="icon fas fa-star"></i>
                                             </div>
                                             <div class="cart-shopping border-icon">
-                                                <a href="{{route('AddCart',$new->id)}}"><i class="icon fas fa-cart-plus"></i></a>
+                                                <a onclick="addSPToCart({{$new->id}})"><i class="icon fas fa-cart-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +146,7 @@
                                                 <i class="icon fas fa-star"></i>
                                             </div>
                                             <div class="cart-shopping border-icon">
-                                                <a href="{{route('AddCart',$hot->id)}}"><i class="icon fas fa-cart-plus"></i></a>
+                                                <a onclick="addSPToCart({{$hot->id}})"><i class="icon fas fa-cart-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>

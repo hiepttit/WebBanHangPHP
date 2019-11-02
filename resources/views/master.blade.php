@@ -169,6 +169,13 @@
             $(".header-third").toggleClass("header-third-index");
         });
     });
+    function addSPToCart(id){
+        var link = "{{route('AddCart',0)}}"+id;
+        //link = link.replace("0",id);
+        $.get(link,function (data,textStatus){
+            alert(data);
+        });
+    }
 </script>
 </body>
 

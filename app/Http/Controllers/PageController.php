@@ -6,6 +6,8 @@ use App\Slide;
 use App\Product;
 use App\ProductType;
 use App\Cart;
+use App\Customer;
+use App\Bill;
 use Session;
 
 use Illuminate\Http\Request;
@@ -40,22 +42,29 @@ class PageController extends Controller
         return view('page.register');
     }
     public function getAddCart(Request $req,$id){
-        //return "Hello";
         $product=Product::find($id);
+        if($product == null)
+            return "Thêm thất bại";
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($product,$id);
+        $cart->addProduct($id);
         $req->session()->put('cart',$cart);
-        return redirect()->back();
+        return "Thêm thành công";
+        //return redirect()->back();
     }
     public function getCart(){
         $slide=Slide::all();
-        return view('page.cart',compact('slide'));
+        $oldCart=Session::get('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $lstPro = $cart->toListProducts();
+        return view('page.cart',compact('slide','lstPro'));
     }
     public function getDelCart($id){
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
+        $cart->removeProduct($id);
 
         if(count($cart->items)>0){
             Session::put('cart',$cart);
@@ -77,5 +86,30 @@ class PageController extends Controller
         }
         
         return view('page.search',compact('slide','product'));
+    }
+    public function CheckOut(Request $request){
+        
+        return redirect()->back()->with("message","Đã thanh toán");
+        $customer = new Customer();
+        $customer->name=$request->customerName;
+        $customer->gender=$request->customerGender;
+        $customer->email=$request->customerEmail;
+        $customer->address=$request->customerAddress;
+        $customer->phone_number=$request->customerPhone;
+        $customer->save();
+
+        $oldCart=Session::get('cart')?Session::get('cart'):null;
+        if($oldCart == null)
+            return "can't create";
+        $cart = new Cart($oldCart);
+        $bill = new Bill();
+        $bill->id_customer = $customer->id;
+        $bill->total = $cart->totalPrice;
+        $bill->payment = $request->typePayment;
+        $bill->note = "Chưa chuyển hàng";
+        $bill->save();
+        $bill->SetBillDetail($cart->listProducts);
+        Session::forget('cart');
+        return redirect()->back()->with("message","Đã thanh toán");
     }
 }
