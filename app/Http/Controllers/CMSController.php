@@ -8,6 +8,7 @@ use App\Http\Requests;
 use DB;
 use  App\Product;
 use  App\Customer;
+use  App\User;
 use Session;
 class CMSController extends Controller
 {
@@ -20,6 +21,18 @@ class CMSController extends Controller
         return view('cms.pages.login');
     }
     public function PostLogin(Request $request){
+        $user = User::where('email',$request->email)->first();
+        if($request->password == $user->password){
+            $user->password = "";
+            Session::put('cmsUser',$user);
+            return redirect()->route('cmsIndex');
+        }
+        return redirect()->back()->with('message','Đăng nhập thất bại!');
+    }
+    public function LogOut(Request $request){
+        if(Session::has('cmsUser'))
+            Session::forget('cmsUser');
+        return redirect()->route('viewLogin');
     }
     public function ManageProduct($page = 1){
         if(!Session::has('cmsUser'))

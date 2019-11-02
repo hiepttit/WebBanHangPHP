@@ -72,4 +72,5 @@ Route::group(['prefix'=>'/cms'],function () {
     Route::get('/manage-customer/{page?}',['as'=>'cmsManageCustomer','uses'=>'CMSController@ManageCustomer']);
     Route::post('/editCustomer',['as'=>'editCustomer','uses'=>'CMSController@EditCustomer']);
     Route::get('/getInfoCustomer/{id}',['as'=>'getCustomerInfo','uses'=>'CMSController@GetCustomerInfo']);
+    Route::get('/logout',['as'=>'logout','uses'=>'CMSController@LogOut']);
 });

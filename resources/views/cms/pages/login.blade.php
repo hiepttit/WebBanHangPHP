@@ -17,6 +17,11 @@
                 <div class="p-5">
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                    @if(Session::has('message'))
+                    <div class="alert alert-warning" role="alert">
+                      {{Session::get('message')}}
+                    </div>
+                    @endif
                   </div>
                   <form class="user" method="POST" action="{{route('cmsLogin')}}">
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
