@@ -2,6 +2,35 @@
 <link rel="stylesheet" href="{{asset('source/styles/shopping-cart.css')}}">
 @section('content')
 <main>
+    {{csrf_token()}}
+    <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+    </script>
+    
+    <script>
+        function deleteThis(id){
+            //console.log(id);
+            //return;
+            var _token = $('input[name="_token"]').val();
+            jQuery.ajax({
+            url: "delGioHang/" + id,
+            type: 'get',
+            data:{_token:_token},
+            success: function(result){
+                alert("Đã xóa!");
+                if(result!="OK")
+                    return;
+                var element = document.getElementById("products_"+id);
+                element.parentNode.removeChild(element);
+                //alter("result");
+            }});
+            };
+        
+                </script>
             <div class="slide-advertise">
                 <div class="contained-fluid">
                     <div class="row">
@@ -74,7 +103,7 @@
                                 <!-- start-1-product -->
                                 @if(Session::has('cart'))
                                 @foreach(session('cart')->items as $product)
-                                <div class="row product">
+                                <div id="products_{{$product['item']['id']}}" class="row product">
                                     <!-- line -->
                                     <div class="col-12">
                                         <hr>
@@ -121,11 +150,11 @@
                                     </div>
                                     <div class="col-1">
                                         <div class="icon-delete">
-                                            <!-- <button onclick="deleteThis({{$product['item']['id']}})"> -->
-                                                <a hrefs="{{route('delCart',$product['item']['id'])}}">
+                                            <button onclick="deleteThis({{$product['item']['id']}})">
+                                                <!-- <a hrefs="{{route('delCart',$product['item']['id'])}}"> -->
                                                     <i class="fas fa-trash "></i>
-                                                </a>
-                                            <!-- </button> -->
+                                                <!-- </a> -->
+                                            </button>
                                         </div>
 
                                     </div>
@@ -134,23 +163,6 @@
                                 @endif
                                 <!-- end-1-product -->
                 </div>
-                <script>
-                    function deleteThis(id){
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                            }
-                        });
-                        jQuery.ajax({
-                            url: "./delGioHang/" + id,
-                            method: 'post',
-                            success: function(result){
-                                jQuery('.alert').show();
-                                jQuery('.alert').html(result.success);
-                            }});
-                        });
-                    }
-                </script>
                             <!--end product-cart -->
 
                         </div>

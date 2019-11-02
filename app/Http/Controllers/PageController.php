@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function getIndex(){
-        $slide=Slide::all();
+        $slide=Slide::paginate(4);
         $new_product=Product::where('new',1)->get();
         $hot_product=Product::where('promotion_price','<>',0)->get();
         // dd($new_product);
@@ -44,11 +44,8 @@ class PageController extends Controller
         $product=Product::find($id);
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-
         $cart->add($product,$id);
         $req->session()->put('cart',$cart);
-
-        
         return redirect()->back();
     }
     public function getCart(){
@@ -56,18 +53,17 @@ class PageController extends Controller
         return view('page.cart',compact('slide'));
     }
     public function getDelCart($id){
-        //return "ok";
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
 
         if(count($cart->items)>0){
-           Session::put('cart',$cart);
+            Session::put('cart',$cart);
         }
         else{
             Session::forget('cart');
         }
-        return redirect()->back();
+        return "OK";
     }
     public function getSearch(Request $req){
         $slide=Slide::all();
