@@ -64,7 +64,7 @@ Route::group(['prefix'=>'/admincp'],function(){
 });
 Route::group(['prefix'=>'/cms'],function () {
     Route::get('/Index',['as'=>'cmsIndex','uses'=>'CMSController@Index']);
-    Route::get('/login','CMSController@GetLogin');
+    Route::get('/login',['as'=>'viewLogin','uses'=>'CMSController@GetLogin']);
     Route::post('/login',['as'=>'cmsLogin','uses'=>'CMSController@PostLogin']);
     Route::get('/manage-product/{page?}',['as'=>'cmsManageProducts','uses'=>'CMSController@ManageProduct']);
     Route::post('/editProduct',['as'=>'editProduct','uses'=>'CMSController@EditProduct']);
