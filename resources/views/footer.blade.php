@@ -3,7 +3,7 @@
         <div class="container-fluid ">
             <div class="row">
                 <div class="col display-align-justify">
-                    © MennLy2019. All Rights Reserved.
+                    © ConCoBeBe. All Rights Reserved.
                 </div>
             </div>
         </div>

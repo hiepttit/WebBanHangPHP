@@ -53,12 +53,12 @@ li{
     font-weight: 700;
 }
 .menu-top .active{
-    color: #ff7f00;
-    text-decoration: #ff7f00;
+    color: var(--main-color);
+    text-decoration: var(--main-color);
     
 }
 .menu-top ul li:hover ~ hr{
-    color: #ff7f00;
+    color: var(--main-color);
 }
 
 
@@ -93,6 +93,7 @@ li{
 /*  */
 .menu{
     width: 100%;
+    height: 100%;
     margin: 0 auto;
   }
   
@@ -101,7 +102,7 @@ li{
     cursor: pointer;
   }
   .menu ul li:hover a{
-    color: #ff7f00;
+    color: var(--main-color);
     transition: .3s ease-in-out;
   }
 .menu a {
@@ -114,29 +115,25 @@ li{
     text-align: center;
     font-weight: 700;
   }
-
+.menu ul hr{
+    margin-left: 16.5%;
+}
   .one,.two,.three,.four,.five,.six,.seven{
       width: 13%;
   }
   
   .two:hover ~ hr {
-    margin-left: 13.5%;
+    margin-left: 30%;
   }
   
   .three:hover ~ hr {
-    margin-left: 27%;
+    margin-left: 43%;
   }
   .four:hover ~ hr {
-    margin-left: 41%;
+    margin-left: 57%;
   }
   .five:hover ~ hr {
-    margin-left: 54%;
-  }
-  .six:hover ~ hr {
-    margin-left: 68%;
-  }
-  .seven:hover ~ hr {
-    margin-left: 81.5%;
+    margin-left: 70%;
   }
   
   
@@ -145,7 +142,7 @@ li{
     width: 13%;
     margin: 0;
     padding: 0;
-    background: #ff7f00;
+    background: var(--main-color);
     border: none;
     transition: .3s ease-in-out;
 }
@@ -167,9 +164,24 @@ li{
     /* border: 1px solid black; */
     margin: 0 auto;
     /* height: 310px; */
-   
 }
+.dropdown-product a{
+    color:#333;
+}
+.dropdown-product hr{
+    transition: width 0.5s  ease-out;
+    width : 0%;
+}
+.dropdown-product .col-4{
+    padding:10px;
+}
+.dropdown-product a:hover{
+    color:var(--main-color);
+}
+.dropdown-product a:hover ~ hr{
+    width : 100%;
 
+}
 .add-home-hide, .add-element-hide, .add-product-hide, .add-page-hide{
     position: absolute;
     width: 100%;
@@ -212,8 +224,28 @@ li{
 }
 
 
-
-
+.search{
+    border-radius:999px;
+    background-color:#f0f0f0;
+    padding:5px;
+}
+.ipt-search{
+border:none;
+outline: none;
+background:none;
+padding-left:5px;
+}
+.btn-search{
+    background-color:var(--main-color);
+    border-radius:999px;
+    width: 25px;
+    height: 25px;
+    color:#fff;
+    border:none;
+}
+.shopping-cart a{
+   color:var(--main-color);
+}
 
 
 

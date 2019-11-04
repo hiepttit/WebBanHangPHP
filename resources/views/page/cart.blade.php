@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="{{asset('source/styles/shopping-cart.css')}}">
 @section('content')
 <main>
-    {{csrf_token()}}
     <script>
     $.ajaxSetup({
         headers: {
