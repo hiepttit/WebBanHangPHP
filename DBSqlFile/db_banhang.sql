@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 29, 2019 lúc 03:17 PM
+-- Thời gian đã tạo: Th10 04, 2019 lúc 08:21 AM
 -- Phiên bản máy phục vụ: 10.4.8-MariaDB
--- Phiên bản PHP: 7.3.10
+-- Phiên bản PHP: 7.2.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `db_banhang`
+-- Cơ sở dữ liệu: `laravel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `account`
+--
+
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `PASSWORD` varchar(1000) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `customerID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
@@ -31,11 +44,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `bills` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_customer` int(11) DEFAULT NULL,
-  `date_order` date DEFAULT NULL,
+  `date_order` date DEFAULT current_timestamp(),
   `total` float DEFAULT NULL COMMENT 'tổng tiền',
   `payment` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'hình thức thanh toán',
   `note` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -48,7 +61,10 @@ INSERT INTO `bills` (`id`, `id_customer`, `date_order`, `total`, `payment`, `not
 (13, 13, '2017-03-21', 400000, 'ATM', 'Vui lòng giao hàng trước 5h', '2017-03-21 07:29:31', '2017-03-21 07:29:31'),
 (12, 12, '2017-03-21', 520000, 'COD', 'Vui lòng chuyển đúng hạn', '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
 (11, 11, '2017-03-21', 420000, 'COD', 'không chú', '2017-03-21 07:16:09', '2017-03-21 07:16:09'),
-(15, 15, '2017-03-24', 220000, 'COD', 'e', '2017-03-24 07:14:32', '2017-03-24 07:14:32');
+(15, 15, '2017-03-24', 220000, 'COD', 'e', '2017-03-24 07:14:32', '2017-03-24 07:14:32'),
+(16, 24, NULL, 570000, 'ATM', 'Chưa chuyển hàng', '2019-11-02 10:09:23', '2019-11-02 10:09:23'),
+(17, 25, '2019-11-02', 570000, 'ATM', 'Chưa chuyển hàng', '2019-11-02 10:10:03', '2019-11-02 10:10:03'),
+(18, 26, '2019-11-02', 570000, 'ATM', 'Chưa chuyển hàng', '2019-11-02 10:12:40', '2019-11-02 10:12:40');
 
 -- --------------------------------------------------------
 
@@ -63,7 +79,7 @@ CREATE TABLE `bill_detail` (
   `quantity` int(11) NOT NULL COMMENT 'số lượng',
   `unit_price` double NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -78,7 +94,13 @@ INSERT INTO `bill_detail` (`id`, `id_bill`, `id_product`, `quantity`, `unit_pric
 (14, 12, 20, 2, 200000, '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
 (13, 12, 8, 1, 120000, '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
 (12, 11, 7, 1, 120000, '2017-03-21 07:16:09', '2017-03-21 07:16:09'),
-(11, 11, 11, 2, 150000, '2017-03-21 07:16:09', '2017-03-21 07:16:09');
+(11, 11, 11, 2, 150000, '2017-03-21 07:16:09', '2017-03-21 07:16:09'),
+(19, 16, 2, 1, 180000, '2019-11-02 10:09:23', '2019-11-02 10:09:23'),
+(20, 16, 10, 1, 390000, '2019-11-02 10:09:23', '2019-11-02 10:09:23'),
+(21, 17, 2, 1, 180000, '2019-11-02 10:10:03', '2019-11-02 10:10:03'),
+(22, 17, 10, 1, 390000, '2019-11-02 10:10:03', '2019-11-02 10:10:03'),
+(23, 18, 2, 1, 180000, '2019-11-02 10:12:40', '2019-11-02 10:12:40'),
+(24, 18, 10, 1, 390000, '2019-11-02 10:12:40', '2019-11-02 10:12:40');
 
 -- --------------------------------------------------------
 
@@ -93,7 +115,7 @@ CREATE TABLE `customer` (
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `note` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `note` varchar(200) COLLATE utf8_unicode_ci DEFAULT 'Đang chờ thanh toán',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -103,11 +125,22 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `email`, `address`, `phone_number`, `note`, `created_at`, `updated_at`) VALUES
-(15, 'ê', 'Nữ', 'huongnguyen@gmail.com', 'e', 'e', 'e', '2017-03-24 07:14:32', '2017-03-24 07:14:32'),
+(15, 'ê', 'Nữ', 'huongnguyen@gmail.com', 'e', 'e', 'eàeafe', '2019-11-02 06:10:35', '2019-11-02 06:10:35'),
 (14, 'hhh', 'nam', 'huongnguyen@gmail.com', 'Lê thị riêng', '99999999999999999', 'k', '2017-03-23 04:46:05', '2017-03-23 04:46:05'),
 (13, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '23456789', 'Vui lòng giao hàng trước 5h', '2017-03-21 07:29:31', '2017-03-21 07:29:31'),
 (12, 'Khoa phạm', 'Nam', 'khoapham@gmail.com', 'Lê thị riêng', '1234567890', 'Vui lòng chuyển đúng hạn', '2017-03-21 07:20:07', '2017-03-21 07:20:07'),
-(11, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '234567890-', 'không chú', '2017-03-21 07:16:09', '2017-03-21 07:16:09');
+(11, 'Hương Hương', 'Nữ', 'huongnguyenak96@gmail.com', 'Lê Thị Riêng, Quận 1', '234567890-', 'Đây là note của khách hàng có mã số 11', '2019-11-02 08:54:58', '2019-11-02 08:54:58'),
+(16, 'a', '1', 'a@g.c', '1', '1', 'Đang chờ thanh toán', '2019-11-02 09:17:29', '2019-11-02 09:17:29'),
+(17, 'af', 'Nam', 'test@g.c', '12', '121', 'Đang chờ thanh toán', '2019-11-02 09:59:12', '2019-11-02 09:59:12'),
+(18, 'af', 'Nam', 'test@g.c', '12', '121', 'Đang chờ thanh toán', '2019-11-02 10:00:13', '2019-11-02 10:00:13'),
+(19, 'af', 'Nam', 'test@g.c', '12', '121', 'Đang chờ thanh toán', '2019-11-02 10:02:01', '2019-11-02 10:02:01'),
+(20, 'af', 'Nam', 'test@g.c', '12', '121', 'Đang chờ thanh toán', '2019-11-02 10:02:42', '2019-11-02 10:02:42'),
+(21, 'bc', 'Nam', 'a@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:07:07', '2019-11-02 10:07:07'),
+(22, 'bc', 'Nam', 'a@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:07:37', '2019-11-02 10:07:37'),
+(23, 'bc', 'Nam', 'a@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:08:35', '2019-11-02 10:08:35'),
+(24, 'bc', 'Nam', 'a@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:09:23', '2019-11-02 10:09:23'),
+(25, 'bc', 'Nam', 'a@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:10:03', '2019-11-02 10:10:03'),
+(26, 'àeafea', 'Nam', 'abc@g.c', '123', '998', 'Đang chờ thanh toán', '2019-11-02 10:12:40', '2019-11-02 10:12:40');
 
 -- --------------------------------------------------------
 
@@ -161,9 +194,9 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `id_type`, `description`, `unit_price`, `promotion_price`, `image`, `unit`, `new`, `created_at`, `updated_at`) VALUES
 (1, 'Samsung Galaxy Note 10+', 1, 'Chiếc điện thoại cao cấp nhất, màn hình lớn nhất, mang trên mình sức mạnh đáng kinh ngạc của một chiếc máy tính và hệ thống 4 camera sau chuyên nghiệp, đó chính là Samsung Galaxy Note 10+, nơi quyền năng mới được thể hiện', 150000, 120000, 'samsung10.jpg', 'cái', 1, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
-(2, 'iPhone Xs Max 64GB', 1, '', 180000, 160000, 'ip10.jpg', 'cái', 1, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
+(2, 'iPhone Xs Max 64GB', 1, 'Bộ nhớ 64GB', 180000, 160000, 'ip10.jpg', 'cái', 1, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
 (3, 'iPhone 11 Pro Max 64GB', 1, '', 150000, 120000, 'ip11.jpg', 'cái', 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
-(4, 'Tai nghe bluetooth choàng đầu', 4, '', 160000, 0, 'tp1.jpg', 'cái', 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
+(4, 'Tai nghe bluetooth choàng đầu', 4, 'Tai nghe bluetooth choàng đầu', 160000, 0, 'tp1.jpg', 'cái', 0, '2016-10-26 03:00:16', '2019-11-01 09:50:35'),
 (5, 'Samsung Galaxy Tab A 8.0 (2017)', 5, '', 160000, 0, 'SST1.jpg', 'cái', 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
 (6, 'Huawei MediaPad T5 10', 5, '', 200000, 180000, 'HW1.jpg', 'cái', 0, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
 (7, 'Loa bluetooth F.Power BT223', 4, '', 160000, 0, 'loablue.jpg', 'cái', 1, '2016-10-26 03:00:16', '2016-10-24 22:11:00'),
@@ -248,8 +281,23 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '', 'a@g.c', '1', '0', '1321', '', '2019-10-30 17:00:00', NULL),
+(7, 'Nguyễn B', 'b@g.c', '1', NULL, NULL, NULL, '2019-11-01 03:14:11', '2019-11-01 03:14:11');
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Chỉ mục cho bảng `bills`
@@ -308,22 +356,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -347,7 +401,7 @@ ALTER TABLE `type_products`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
