@@ -139,7 +139,7 @@
                                     <div class="col-2">
                                         <div class="quantity">
                                             <div class="input-group">
-                                                <input type="text" value="{{Session('cart')->listProducts['0'.$product->id]}}">
+                                                <input type="text" value="{{Session('cart')->listProducts[$product->id]}}">
                                                 <div class="button">
                                                     <button>+</button>
                                                     <button>-</button>
@@ -149,7 +149,7 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="product-price-sum">$ {{Session('cart')->listProducts['0'.$product->id]*$product->unit_price}}</div>
+                                        <div class="product-price-sum">$ {{Session('cart')->listProducts[$product->id]*$product->unit_price}}</div>
                                     </div>
                                     <div class="col-1">
                                         <div class="icon-delete">

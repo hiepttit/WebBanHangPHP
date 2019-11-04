@@ -47,7 +47,7 @@ class PageController extends Controller
             return "Thêm thất bại";
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$id);
+        //$cart->add($product,$id);
         $cart->addProduct($id);
         $req->session()->put('cart',$cart);
         return "Thêm thành công";
@@ -63,10 +63,10 @@ class PageController extends Controller
     public function getDelCart($id){
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->removeItem($id);
+        //$cart->removeItem($id);
         $cart->removeProduct($id);
-
-        if(count($cart->items)>0){
+        //Session::put('cart',$cart);
+        if(count($cart->listProducts) > 0){
             Session::put('cart',$cart);
         }
         else{

@@ -51,6 +51,7 @@ class Cart extends Model
 		unset($this->items[$id]);
 	}
 	public function addProduct($id){
+		$id = intval($id);
 		if(array_key_exists($id, $this->listProducts)){
 			$this->listProducts[$id]++;
 		}
@@ -58,9 +59,10 @@ class Cart extends Model
 			$this->listProducts[$id] = 1;
 	}
 	public function removeProduct($id){
+		$id = intval($id);
 		if(array_key_exists($id, $this->listProducts)){
 			$this->listProducts[$id]--;
-			if($this->listProducts[$id] == 0)
+			if($this->listProducts[$id] < 1)
 				unset($this->listProducts[$id]);
 		}
 	}
