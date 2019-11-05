@@ -63,24 +63,24 @@
               <h4 class="modal-title">Sản phẩm</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
-              <div class="modal-body">
-              <div class="row">
-                <label>ID</label><input name="productsID" id="productsID" readonly/>
+              <div class="modal-body" style="max-height: 600px; overflow: auto;">
+              <div class="form-group">
+                <label>ID</label><input class="form-control" name="productsID" id="productsID" readonly/>
                 </div>
-              <div class="row">
-                <label>Name</label><input name="productsName" id="productsName"/>
+              <div class="form-group">
+                <label>Name</label><input class="form-control" name="productsName" id="productsName"/>
                 </div>
-              <div class="row">
-                <label>Type</label><input name="productsType" id="productsType"/>
+              <div class="form-group">
+                <label>Type</label><input class="form-control" name="productsType" id="productsType"/>
                 </div>
-              <div class="row">
-                <label>Description</label><textarea name="productsDescription" rows="5" id="productsDescription"></textarea>
+              <div class="form-group">
+                <label>Description</label><textarea class="form-control" name="productsDescription" rows="5" id="productsDescription"></textarea>
                 </div>
-              <div class="row">
-                <label>Price</label><input name="productsPrice" id="productsPrice"/>
+              <div class="form-group">
+                <label>Price</label><input class="form-control" name="productsPrice" id="productsPrice"/>
                 </div>
-              <div class="row">
-                <label>Img</label><input name="productsImg" id="productsImg"/>
+              <div class="form-group">
+                <label>Img</label><input class="form-control" name="productsImg" id="productsImg"/>
                 </div>
               </div>
               

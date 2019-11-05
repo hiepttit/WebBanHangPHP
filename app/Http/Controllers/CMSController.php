@@ -22,6 +22,7 @@ class CMSController extends Controller
     }
     public function PostLogin(Request $request){
         $user = User::where('email',$request->email)->first();
+        if($user!=null)
         if($request->password == $user->password){
             $user->password = "";
             Session::put('cmsUser',$user);
