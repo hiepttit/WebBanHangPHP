@@ -23,19 +23,13 @@
                                     @if($count==0)
                                     <div class="carousel-item active">
                                         <img src="source/images/slide/{{$sl->image}}" alt="Los Angeles" width="100%">
-                                        <div class="carousel-caption color-black">
-                                            <h3>PRODUCT-ADVERTISE-X</h3>
-                                            <p>Shopping Now</p>
-                                        </div>
+                                       
                                     </div>
                                     <?php $count++?>                                   
                                     @else
                                     <div class="carousel-item">
                                         <img src="source/images/slide/{{$sl->image}}" alt="Los Angeles" width="100%">
-                                        <div class="carousel-caption color-black">
-                                            <h3>PRODUCT-ADVERTISE-X</h3>
-                                            <p>Shopping Now</p>
-                                        </div>
+                                        
                                     </div>
                                     @endif                                                                      
                                 @endforeach

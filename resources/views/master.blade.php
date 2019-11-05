@@ -48,7 +48,9 @@
         </div>
     
         <div class="color-box">
+                <h3>Choose your favorite color</h3>
             <div class="color-items">
+                
                 <button id="green-item" class="green-item"></button>
                 <button id="orange-item" class="orange-item"></button>
             </div>    
@@ -148,18 +150,6 @@
 <!-- Header -->
 <script>
     $(document).ready(function () {
-        // $('#product').click(function () {
-        //     $(".xy").toggleClass("xyz");
-        //     $(".header-third").toggleClass("header-third-index");
-        // });
-        // $("#home").hover(function(){
-        //     $(".add-home-hide").toggleClass("add-home-show");
-        //     $(".header-third").toggleClass("header-third-index");
-        // });
-        // $("#element").hover(function(){
-        //     $(".add-element-hide").toggleClass("add-element-show");
-        //     $(".header-third").toggleClass("header-third-index");
-        // });
         $("#product").click(function(){
             $(".add-product-hide").toggleClass("add-product-show");
             $(".header-third").toggleClass("header-third-index");
