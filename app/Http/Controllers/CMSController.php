@@ -22,11 +22,12 @@ class CMSController extends Controller
     }
     public function PostLogin(Request $request){
         $user = User::where('email',$request->email)->first();
-        if($request->password == $user->password){
-            $user->password = "";
-            Session::put('cmsUser',$user);
-            return redirect()->route('cmsIndex');
-        }
+        if($user != null)
+            if($request->password == $user->password){
+                $user->password = "";
+                Session::put('cmsUser',$user);
+                return redirect()->route('cmsIndex');
+            }
         return redirect()->back()->with('message','Đăng nhập thất bại!');
     }
     public function LogOut(Request $request){

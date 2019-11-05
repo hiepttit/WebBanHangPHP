@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="{{asset('source/styles/shopping-cart.css')}}">
 @section('content')
 <main>
-    {{csrf_token()}}
     <script>
     $.ajaxSetup({
         headers: {
@@ -21,12 +20,21 @@
             type: 'get',
             data:{_token:_token},
             success: function(result){
-                alert("Đã xóa!");
-                if(result!="OK")
+                if(result!="OK"){
+                    alert("Lỗi xóa!");
                     return;
+                }
+                var totalPrice = parseInt(document.getElementById("totalPrice").innerText);
+                var totalQty = document.getElementById("totalQty").innerText;
+                var str = document.getElementById("price_"+ id).innerText
+                var newstr = str.substring(1);
+                var qty = document.getElementById("qty_"+ id).value;
+                document.getElementById("totalPrice").innerText = totalPrice - parseInt(newstr);
+                document.getElementById("totalQty").innerText = totalQty - parseInt(qty);
                 var element = document.getElementById("products_"+id);
                 element.parentNode.removeChild(element);
                 //alter("result");
+                alert("Đã xóa!");
             }});
             };
         
@@ -139,7 +147,7 @@
                                     <div class="col-2">
                                         <div class="quantity">
                                             <div class="input-group">
-                                                <input type="text" value="{{Session('cart')->listProducts[$product->id]}}">
+                                                <input id="qty_{{$product->id}}" type="text" value="{{Session('cart')->listProducts[$product->id]}}">
                                                 <div class="button">
                                                     <button>+</button>
                                                     <button>-</button>
@@ -149,7 +157,7 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="product-price-sum">$ {{Session('cart')->listProducts[$product->id]*$product->unit_price}}</div>
+                                        <div id="price_{{$product->id}}" class="product-price-sum">$ {{Session('cart')->listProducts[$product->id]*$product->unit_price}}</div>
                                     </div>
                                     <div class="col-1">
                                         <div class="icon-delete">
@@ -182,7 +190,7 @@
                                 <hr>
                                 <div class="row product-cart-items">
                                     <div class="col"><span class="float-left">Items</span></div>
-                                    <div class="col "><span class="float-right">{{Session('cart')->totalQty??0}}</span></div>
+                                    <div class="col "><span id="totalQty" class="float-right">{{Session('cart')->totalQty??0}}</span></div>
                                 </div>
 
                                 <!-- <div class="row product-cart-promo-code">
@@ -196,7 +204,13 @@
                                 <hr>
                                 <div class="row product-cart-total">
                                     <div class="col float-left total">Total</div>
-                                    <div class="col"><span class="float-right price">{{Session('cart')->totalPrice??0}}</span></div>
+                                    <div class="col"><span id="totalPrice" class="float-right price">
+                                    @if(Session::has('cart'))
+                                        {{Session('cart')->totalPrice}}
+                                    @else
+                                        0
+                                    @endif
+                                    </span></div>
                                 </div>
                                 <hr>
                                 <div class="row product-cart-checkout">

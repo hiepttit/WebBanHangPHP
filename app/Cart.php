@@ -52,19 +52,49 @@ class Cart extends Model
 	}
 	public function addProduct($id){
 		$id = intval($id);
+		$tempProduct = Product::find($id);
+		if($tempProduct==null)
+			return;
 		if(array_key_exists($id, $this->listProducts)){
 			$this->listProducts[$id]++;
 		}
 		else
 			$this->listProducts[$id] = 1;
+		$this->totalQty += 1;
+		$this->totalPrice += $tempProduct->unit_price;
 	}
-	public function removeProduct($id){
+	public function reduceProduct($id){
 		$id = intval($id);
+		$tempProduct = Product::find($id);
+		if($tempProduct==null)
+			return;
 		if(array_key_exists($id, $this->listProducts)){
 			$this->listProducts[$id]--;
 			if($this->listProducts[$id] < 1)
 				unset($this->listProducts[$id]);
 		}
+		$this->totalQty -= 1;
+		$this->totalPrice -= $tempProduct->unit_price;
+		$this->CheckQtyAndPrice();
+	}
+	public function removeProduct($id){
+		
+		$id = intval($id);
+		$tempProduct = Product::find($id);
+		if($tempProduct==null)
+			return;
+		if(array_key_exists($id, $this->listProducts)){
+			$this->totalQty -= $this->listProducts[$id];
+			$this->totalPrice -= $tempProduct->unit_price * $this->listProducts[$id];
+			unset($this->listProducts[$id]);
+			$this->CheckQtyAndPrice();
+		}
+	}
+	private function CheckQtyAndPrice(){
+		if($this->totalQty < 0)
+			$this->totalQty = 0;
+		if($this->totalPrice < 0)
+			$this->totalPrice = 0;
 	}
 	public function toListProducts(){
 		$lstPro = [];
@@ -72,9 +102,9 @@ class Cart extends Model
 		$this->totalQty = 0;
 		foreach ($this->listProducts as $key => $value) {
 			$temp = Product::find($key);
+			if($temp==null)
+				continue;
 			array_push($lstPro,$temp);
-			$this->totalQty += $value;
-			$this->totalPrice += ($temp->unit_price * $value);
 		}
 		return $lstPro;
 	}
