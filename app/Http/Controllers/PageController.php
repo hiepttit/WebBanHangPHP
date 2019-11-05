@@ -88,8 +88,6 @@ class PageController extends Controller
         return view('page.search',compact('slide','product'));
     }
     public function CheckOut(Request $request){
-        
-        return redirect()->back()->with("message","Đã thanh toán");
         $customer = new Customer();
         $customer->name=$request->customerName;
         $customer->gender=$request->customerGender;
@@ -97,7 +95,8 @@ class PageController extends Controller
         $customer->address=$request->customerAddress;
         $customer->phone_number=$request->customerPhone;
         $customer->save();
-
+        if($customer->id == null)
+            return "Lỗi tạo customer!";
         $oldCart=Session::get('cart')?Session::get('cart'):null;
         if($oldCart == null)
             return "can't create";
@@ -108,6 +107,8 @@ class PageController extends Controller
         $bill->payment = $request->typePayment;
         $bill->note = "Chưa chuyển hàng";
         $bill->save();
+        if($bill->id == 0)
+            return "Lỗi tạo bill";
         $bill->SetBillDetail($cart->listProducts);
         Session::forget('cart');
         return redirect()->back()->with("message","Đã thanh toán");
