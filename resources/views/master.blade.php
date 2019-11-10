@@ -167,6 +167,9 @@
         });
     }
 </script>
+    @if(Session::has('messageC'))
+        <script>alert("{{Session::get('messageC')}}")</script>
+    @endif
 </body>
 
 

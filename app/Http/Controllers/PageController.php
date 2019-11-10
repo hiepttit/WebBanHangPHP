@@ -8,6 +8,7 @@ use App\ProductType;
 use App\Cart;
 use App\Customer;
 use App\Bill;
+use App\Account;
 use Session;
 
 use Illuminate\Http\Request;
@@ -25,7 +26,61 @@ class PageController extends Controller
         return view('page.trangchu',compact('slide','new_product','hot_product'));
     }
     public function getLogin(){
+        if(Session::has('cusUser'))
+            return redirect()->route('trang-chu');
         return view('page.login');
+    }
+    public function postLogin(Request $request){
+        if(Session::has('cusUser'))
+            return redirect()->route('trang-chu');
+        $account = Account::where('username',$request->username)->first();
+        if($account!=null){
+            if($account->PASSWORD == $request->password){
+                $customer=Customer::find($account->customerID);
+                Session::put('cusUser',$customer);
+                return redirect()->route('trang-chu');
+            }
+        }
+        return redirect()->route('getLogin')->with("messageC","Đăng nhập thất bại!");
+    }
+    public function getRegister(){
+        if(Session::has('cusUser'))
+            return redirect()->route('trang-chu');
+        return view('page.register');
+    }
+    public function logout(){
+        if(Session::has('cusUser'))
+            Session::forget('cusUser');
+        return redirect()->route('trang-chu');
+    }
+    public function postRegister(Request $request){
+        if(Session::has('cusUser'))
+            return redirect()->route('trang-chu');
+        $account = Account::where('username',$request->email)->first();
+        if($account != null)
+            return redirect()->route('getRegister')->with("messageC","Đăng ký thất bại!");
+        $customer = Customer::where('email',$request->email)->first();
+        if($customer == null){
+            $customer->email = $request->email;
+            $customer->name = $request->name;
+            $customer->gender = $request->gender;
+            $customer->address = $request->address;
+            $customer->phone_number = $request->phone_number;
+            $customer->save();
+        }
+        else{
+            $customer->name = $request->name;
+            $customer->gender = $request->gender;
+            $customer->address = $request->address;
+            $customer->phone_number = $request->phone_number;
+            $customer->save();
+        }
+        $account = new Account();
+        $account->username = $request->email;
+        $account->PASSWORD = $request->password;
+        $account->customerID = $customer->id;
+        $account->save();
+        return redirect()->route('getLogin')->with("messageC","Đăng ký thành công!");
     }
     public function getCategory($type){
         $slide=Slide::all();
@@ -37,9 +92,6 @@ class PageController extends Controller
         $slide=Slide::all();
         $sanpham=Product::where('id',$req->id)->first();
         return view('page.Product_detail',compact('slide','sanpham'));
-    }
-    public function getRegister(){
-        return view('page.register');
     }
     public function getAddCart(Request $req,$id){
         $product=Product::find($id);
@@ -88,13 +140,18 @@ class PageController extends Controller
         return view('page.search',compact('slide','product'));
     }
     public function CheckOut(Request $request){
-        $customer = new Customer();
-        $customer->name=$request->customerName;
-        $customer->gender=$request->customerGender;
-        $customer->email=$request->customerEmail;
-        $customer->address=$request->customerAddress;
-        $customer->phone_number=$request->customerPhone;
-        $customer->save();
+        if(Session::has('cusUser')){
+            $customer = Customer::find(Session::get('cusUser')->id);
+        }
+        else{
+            $customer = new Customer();
+            $customer->name=$request->customerName;
+            $customer->gender=$request->customerGender;
+            $customer->email=$request->customerEmail;
+            $customer->address=$request->customerAddress;
+            $customer->phone_number=$request->customerPhone;
+            $customer->save();
+        }
         if($customer->id == null)
             return "Lỗi tạo customer!";
         $oldCart=Session::get('cart')?Session::get('cart'):null;

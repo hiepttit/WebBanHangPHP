@@ -46,7 +46,8 @@
                         <div class="row justify-content-center">
                           
                             <div class="col-9 ">
-                                <form class="form-login">
+                                <form class="form-login" method="POST" action="{{route('postRegister')}}">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                                     <div class="row">
                                             <div class="col-12 mt-4">
                                                     <h4 class="title">LOG IN YOUR ACOUNT</h4>
@@ -63,11 +64,11 @@
                                                 <div class="col-6 ">
                                                     <div class="row justify-content-center">
                                                             <div class="custom-control custom-radio mr-3">
-                                                                    <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+                                                                    <input type="radio" class="custom-control-input" id="customControlValidation2" name="gender" value="Nam" required>
                                                                     <label class="custom-control-label" for="customControlValidation2">Mr. </label>
                                                             </div>
                                                             <div class="custom-control custom-radio mb-2">
-                                                                        <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+                                                                        <input type="radio" class="custom-control-input" id="customControlValidation3" name="gender" value="Nữ" required>
                                                                         <label class="custom-control-label" for="customControlValidation3">Mrs. </label>
                                                                         
                                                             </div>
@@ -78,19 +79,19 @@
                                         </div>
                                         <div class="col-12 mb-1">
                                             <div class="row">
-                                                <div class="col-3 ml-4"><label for="formGroupExampleInput2">First name</label>
+                                                <div class="col-3 ml-4"><label for="formGroupExampleInput2">Name</label>
                                                 </div>
                                                 <div class="col-6">
         
                                                     <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" id="formGroupExampleInput">
+                                                        <input type="text" class="form-control" id="formGroupExampleInput" name="name">
         
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
         
-                                        <div class="col-12 mb-3">
+                                        <div style="display:none" class="col-12 mb-3">
                                             <div class="row">
                                                 <div class="col-3 ml-4"><label for="formGroupExampleInput">Last name</label>
                                                 </div>
@@ -110,7 +111,7 @@
                                                 <div class="col-3 ml-4"><label for="formGroupExampleInput">Email</label></div>
                                                 <div class="col-6">
                                                     <div class="input-group mb-1">
-                                                        <input type="email" class="form-control" id="formGroupExampleInput">
+                                                        <input type="email" class="form-control" id="formGroupExampleInput" name="email">
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,7 +124,7 @@
         
                                                     <div class="input-group mb-3">
                                                         <input type="password" class="form-control"
-                                                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            aria-label="Recipient's username" aria-describedby="basic-addon2"  name="password">
                                                         <div class="input-group-append">
                                                             <button class="btn btn-secondary btn-show"
                                                                 type="button">SHOW</button>
@@ -138,7 +139,7 @@
                                                 <div class="col-6">
         
                                                     <div class="input-group mb-1">
-                                                        <input type="text" class="form-control" id="formGroupExampleInput">
+                                                        <input type="text" class="form-control" id="formGroupExampleInput" name="address">
                                                     </div>
                                                 </div>
         
@@ -146,15 +147,15 @@
                                         </div>
                                         <div class="col-12 mb-3">
                                             <div class="row">
-                                                <div class="col-3 ml-4"><label for="formGroupExampleInput">Birthday</label>
+                                                <div class="col-3 ml-4"><label for="formGroupExampleInput">Phone number</label>
                                                 </div>
                                                 <div class="col-6">
         
                                                     <div class="input-group mb-1">
-                                                        <input type="date" class="form-control" id="formGroupExampleInput">
+                                                        <input name="phone_number" type="number" class="form-control" id="formGroupExampleInput">
         
                                                     </div>
-                                                    <div class="mt-2 mb-3 ex">(Ex: 12/08/1998)</div>
+                                                    <div style="display:none" class="mt-2 mb-3 ex">(Ex: 12/08/1998)</div>
                                                     <div>
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input"
@@ -172,9 +173,9 @@
                                                 <hr class="ml-4 mr-4">
                                         </div>
                                         <div class="col-12 button-sign-out mt-2 mb-4  pr-5">
-                                            <a href="source/login.html"><button class="btn-color" type="button">SAVE</button></a>
+                                            <a href="#"><button class="btn-color" type="submit">SAVE</button></a>
                                         </div>
-    
+
                                     </div>
                                 </form>
         
@@ -182,7 +183,7 @@
         
                         </div>
                     </div>
-        
+                    <
                 </div>
 </main>
 @endsection

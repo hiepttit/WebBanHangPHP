@@ -47,7 +47,9 @@
                       
     
                         <div class="col-9 ">
-                            <form class="form-login">
+                            <form class="form-login" method="POST" action="{{route('postLogin')}}">
+                            <input name="_token" value="{{csrf_token()}}" type="hidden"/>
+                                            
                                 <div class="row mt-2">
                                         <div class="col-12 mt-4">
                                                 <h4 class="title">LOG IN YOUR ACOUNT</h4>
@@ -57,7 +59,7 @@
                                         <div class="row">
                                             <div class="col-3 ml-4 center"><label for="formGroupExampleInput">Email</label></div>
                                             <div class="col-6 input-group">
-                                                <input type="email" class="form-control" id="formGroupExampleInput">
+                                                <input name="username" type="email" class="form-control" id="formGroupExampleInput">
                                             </div>
     
                                         </div>
@@ -67,9 +69,9 @@
                                             <div class="col-3 ml-4 center"><label for="formGroupExampleInput2">Password</label>
                                             </div>
                                             <div class="col-6">
-    
+
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control"
+                                                    <input name="password" type="password" class="form-control"
                                                         aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
                                                         <button class="btn btn-secondary btn-show"
@@ -85,7 +87,7 @@
                                     <a href="#" class="">Forgot your password?</a>
                                 </div>
                                 <div class="col-12 button-sign-in mt-3 mb-4">
-                                    <button class="btn-color" type="button">SIGN IN</button>
+                                    <button class="btn-color" type="submit">SIGN IN</button>
                                 </div>
                                 <div class="col-12">
                                         <hr class="ml-4 mr-4">

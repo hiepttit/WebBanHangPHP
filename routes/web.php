@@ -21,8 +21,24 @@ Route::get('/',[
     'uses'=>'PageController@getIndex'
 ]);
 Route::get('login',[
-    'as'=>'login',
+    'as'=>'getLogin',
     'uses'=>'PageController@getLogin'
+]);
+Route::get('register',[
+    'as'=>'getRegister',
+    'uses'=>'PageController@getRegister'
+]);
+Route::post('login',[
+    'as'=>'postLogin',
+    'uses'=>'PageController@postLogin'
+]);
+Route::post('register',[
+    'as'=>'postRegister',
+    'uses'=>'PageController@postRegister'
+]);
+Route::get('logout',[
+    'as'=>'vlogout',
+    'uses'=>'PageController@logout'
 ]);
 Route::get('loaiSP/{type}',[
     'as'=>'loaiSP',
@@ -31,10 +47,6 @@ Route::get('loaiSP/{type}',[
 Route::get('ProductDetail/{id}',[
     'as'=>'ProductDetail',
     'uses'=>'PageController@getProductDetail'
-]);
-Route::get('DangKy',[
-    'as'=>'Register',
-    'uses'=>'PageController@getRegister'
 ]);
 Route::get('addGioHang/{id}',[
     'as'=>'AddCart',

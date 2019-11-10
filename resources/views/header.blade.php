@@ -5,15 +5,19 @@
                         <div class="col-6">Phone: 0123456789</div>
                         <div class="col-6">
                             <div class="inline-block float-right">
+                                @if(Session::has('cusUser'))
                                 <i class="icon-account fas fa-user-circle"></i>
-                                <div id="my-account" class="my-account inline-block"></div>
+                                <div id="my-account" class="my-account inline-block"> {{Session::get('cusUser')->name}}</div>
                                 <span class="m-2">|</span>
-                                <i class="icon-wish fas fa-heart"></i>
-                                <div class="wish-list inline-block"></div>
+                                <a style="color:white" href="{{route('vlogout')}}">Logout</a>
+                                @else
+                                <!-- <i class="icon-wish fas fa-heart"></i> -->
+                                <div class="wish-list inline-block"><a style="color:white" href="{{route('getRegister')}}">Đăng ký</a></div>
                                 <span class="m-2">|</span>
-                                <i class="icon-login fas fa-lock"></i>
-                                <div class="login inline-block"></div>
+                                <!-- <i class="icon-login fas fa-lock"></i> -->
+                                <div class="login inline-block"><a style="color:white" href="{{route('getLogin')}}">Đăng nhập</a></div>
                                 <div id="div"></div>
+                                @endif
                             </div>
                         </div>
                     </div>

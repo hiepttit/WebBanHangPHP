@@ -233,7 +233,9 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body" style="max-height: 600px; overflow: auto;">
-                            
+                            <div>
+                            @if(!Session::has('cusUser'))
+
                             <div class="form-group">
                                 <label>Tên<label>
                                 <input class="form-control" name="customerName" id="customerName"/>
@@ -255,6 +257,8 @@
                                 <input class="form-control" name="customerPhone" id="customerPhone"/>
                             </div>
                             
+                            @endif
+                            <div>
                             <div class="form-group">
                                 <label>Số lượng hàng<label>
                                 <input class="form-control" value="{{Session::get('cart')->totalQty??0}}" readonly/>
