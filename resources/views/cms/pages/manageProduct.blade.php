@@ -43,7 +43,7 @@
                   <button onclick="editProduct({{$pr->id}})" class="btn btn-warning btn-circle">
                       <i class="fas fa-edit"></i>
                     </button>
-                  <button class="btn btn-danger btn-circle">
+                  <button onclick="deletePro({{$pr->id}})" class="btn btn-danger btn-circle">
                     <i class="fas fa-trash"></i>
                   </button>
                   </div>
@@ -116,6 +116,14 @@
             $("#myModal").modal('show');
             });
             //$("#myModal").modal('hide');
+          }
+          function deletePro(id){
+            $.get("delProduct/" + id,function(data){
+              alert(data);
+              if(data=="OK"){
+                location.reload();
+              }
+            });
           }
         </script>
        </div>

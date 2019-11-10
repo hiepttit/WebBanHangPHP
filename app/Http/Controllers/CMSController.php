@@ -62,7 +62,27 @@ class CMSController extends Controller
             //$product->name=$request->productsID;
             $product->save();
         }
+        else{
+            $product = new Product();
+            $product->name=$request->productsName;
+            $product->id_type=$request->productsType;
+            $product->description=$request->productsDescription;
+            $product->unit_price=$request->productsPrice;
+            $product->image=$request->productsImg;
+            //$product->name=$request->productsID;
+            $product->save();
+        }
         return redirect()->back();
+    }
+    public function DeletePro(int $id){
+        if(!Session::has('cmsUser'))
+            return redirect()->route('viewLogin');
+        $product = Product::find($id);
+        if($product!=null){
+            $product->delete();
+            return "OK";
+        }
+        return "error";
     }
     public function GetInfo(int $id){
         if(!Session::has('cmsUser'))
@@ -95,7 +115,26 @@ class CMSController extends Controller
             $customer->phone_number=$request->customerPhone;
             $customer->save();
         }
+        else {
+            $customer = new Customer();
+            $customer->name=$request->customerName;
+            $customer->gender=$request->customerGender;
+            $customer->email=$request->customerEmail;
+            $customer->address=$request->customerAddress;
+            $customer->phone_number=$request->customerPhone;
+            $customer->save();
+        }
         return redirect()->back();
+    }
+    public function DeleteCustomer(int $id){
+        if(!Session::has('cmsUser'))
+            return redirect()->route('viewLogin');
+        $customer = Customer::find($id);
+        if($customer!=null){
+            $customer->delete();
+            return "OK";
+        }
+        return "error";
     }
     public function GetCustomerInfo(int $id){
         if(!Session::has('cmsUser'))

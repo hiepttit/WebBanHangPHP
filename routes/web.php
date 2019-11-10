@@ -68,9 +68,12 @@ Route::group(['prefix'=>'/cms'],function () {
     Route::post('/login',['as'=>'cmsLogin','uses'=>'CMSController@PostLogin']);
     Route::get('/manage-product/{page?}',['as'=>'cmsManageProducts','uses'=>'CMSController@ManageProduct']);
     Route::post('/editProduct',['as'=>'editProduct','uses'=>'CMSController@EditProduct']);
+    Route::get('/delProduct/{id}',['as'=>'deleteProduct','uses'=>'CMSController@DeletePro']);
     Route::get('/getInfoProduct/{id}',['as'=>'getInfo','uses'=>'CMSController@GetInfo']);
     Route::get('/manage-customer/{page?}',['as'=>'cmsManageCustomer','uses'=>'CMSController@ManageCustomer']);
     Route::post('/editCustomer',['as'=>'editCustomer','uses'=>'CMSController@EditCustomer']);
     Route::get('/getInfoCustomer/{id}',['as'=>'getCustomerInfo','uses'=>'CMSController@GetCustomerInfo']);
+    Route::get('/delCustomer/{id}',['as'=>'deleteCustomer','uses'=>'CMSController@DeleteCustomer']);
     Route::get('/logout',['as'=>'logout','uses'=>'CMSController@LogOut']);
+    
 });

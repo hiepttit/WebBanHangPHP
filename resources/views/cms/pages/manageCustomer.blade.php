@@ -43,7 +43,7 @@
                   <button onclick="editCustomer({{$cm->id}})" class="btn btn-warning btn-circle">
                       <i class="fas fa-edit"></i>
                     </button>
-                  <button class="btn btn-danger btn-circle">
+                  <button onclick="deleteCus({{$cm->id}})" class="btn btn-danger btn-circle">
                     <i class="fas fa-trash"></i>
                   </button>
                   </div>
@@ -125,6 +125,14 @@
             $("#myModal").modal('show');
             });
             //$("#myModal").modal('hide');
+          }
+          function deleteCus(id){
+            $.get("delCustomer/" + id,function(data){
+              alert(data);
+              if(data=="OK"){
+                location.reload();
+              }
+            });
           }
         </script>
        </div>
